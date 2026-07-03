@@ -3,7 +3,6 @@ import pandas as pd
 import sklearn
 import os
 
-from google.colab import userdata
 from huggingface_hub import HfApi
 
 
@@ -19,7 +18,7 @@ from huggingface_hub import login, HfApi
 
 
 
-os.environ["HF_TOKEN"] = userdata.get("HF_TOKEN")
+os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
 api = HfApi(token=os.getenv("HF_TOKEN"))
 
 # please create your dataset as you create your space

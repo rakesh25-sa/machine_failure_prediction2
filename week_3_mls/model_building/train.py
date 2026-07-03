@@ -16,7 +16,6 @@ from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
 
-from google.colab import userdata
 
 
 mlflow.set_tracking_uri("http://localhost:5000")
@@ -24,7 +23,7 @@ mlflow.set_experiment("mlops-training-experiment")
 
 api = HfApi()
 
-os.environ['HF_TOKEN'] = userdata.get("HF_TOKEN")
+os.environ['HF_TOKEN'] = os.getenv("HF_TOKEN")
 
 
 api = HfApi(token=os.getenv("HF_TOKEN"))

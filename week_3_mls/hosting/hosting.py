@@ -1,9 +1,8 @@
 from huggingface_hub import HfApi
 import os
 
-from google.colab import userdata
 
-os.environ["HF_TOKEN"] = userdata.get("HF_TOKEN")    # please use your token
+os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")    # please use your token
 
 api = HfApi(token=os.getenv("HF_TOKEN"))
 api.upload_folder(
