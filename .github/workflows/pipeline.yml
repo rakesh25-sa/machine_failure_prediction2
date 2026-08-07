@@ -77,9 +77,10 @@ jobs:
         run: python week_3_mls/model_building/train.py
       - name: Commit trained model
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add week_3_mls/deployment/best_machine_failure_model_v1.joblib
-          git commit -m "Add trained model [skip ci]" || echo "No changes to commit"
+          git add -f week_3_mls/deployment/*.joblib
+          git commit -m "Add trained model [skip ci]" || echo "nothing new to commit"
+          git checkout -- .
           git pull --rebase origin main
-          git push
+          git push origin main
